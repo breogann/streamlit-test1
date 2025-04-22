@@ -19,6 +19,8 @@ with open("models/modelo_entrenado.pkl", "rb") as f:
             else:
                 input_data[col] = st.number_input(col, value=0)
         df_input = pd.DataFrame([input_data])
+
+        
     if not df_input.empty and st.button("Predecir precio"):
         df_input = pd.get_dummies(df_input)
         for col in [c for c in modelo.feature_names_in_ if c not in df_input.columns]:
